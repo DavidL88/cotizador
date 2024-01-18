@@ -5,7 +5,7 @@ import Error from "./Error"
 
 const Formulario = () => {
 
-  const { datos, handleChangeDatos, error, setError } = useCotizador()
+  const { datos, handleChangeDatos, error, setError, cotizarSeguro } = useCotizador()
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -16,7 +16,7 @@ const Formulario = () => {
     }
 
     setError('')
-    // TODO : Cotizar
+    cotizarSeguro()
   }
 
   return (
@@ -75,7 +75,7 @@ const Formulario = () => {
           <label className="block mb-3 font-bold text-gray-400 uppercase">
             Elige un plan
           </label>
-          <div className="flex gap-3 items-center">
+          <div className="flex items-center gap-3">
               {PLANES.map(plan => (
                 <Fragment key={plan.id}>
                   <label>
@@ -93,7 +93,7 @@ const Formulario = () => {
         </div>
         <input 
           type="submit" 
-          className="w-full bg-indigo-500 hover:bg-indigo-600 transition-colors text-white cursor-pointer p-3 uppercase font-bold"
+          className="w-full p-3 font-bold text-white uppercase transition-colors bg-indigo-500 cursor-pointer hover:bg-indigo-600"
           value="Cotizar"
         />
       </form>
